@@ -13,11 +13,12 @@ export GIT_WORK_TREE="$TARGET_FOLDER"
 echo "Job started: $(date)"
 echo "$GIT_WORK_TREE"
 
-if [ ! -d "$GIT_DIR" ]; then
+if [ ! -d ${GIT_DIR}/info ]; then
     mkdir -p "$GIT_DIR"
     git init
     git config user.name "$GIT_NAME"
     git config user.email "$GIT_EMAIL"
+    git config --global http.sslVerify false
     git remote add origin "$GIT_URL"
 
     mkdir -p "$GIT_DIR/info"
